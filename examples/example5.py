@@ -87,12 +87,13 @@ def main():
 
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()))
     # optimizer.setup(model)
-    loop = tqdm.tqdm(range(300))
+    loop = tqdm.tqdm(range(1000))
     for i in loop:
         loop.set_description('Optimizing')
         # optimizer.target.cleargrads()
         optimizer.zero_grad()
         loss = model()
+        print(loss)
         loss.backward()
         optimizer.step()
         images = model.renderer(model.vertices, model.faces, mode='silhouettes')
