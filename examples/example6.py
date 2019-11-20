@@ -164,8 +164,8 @@ class Model(nn.Module):
         self.renderer = renderer
 
         # define Laplacian and flatten geometry constraints
-        self.laplacian_loss = LaplacianLoss(self.vertices[0].cpu(), self.faces[0].cpu())
-        self.flatten_loss = FlattenLoss(self.faces[0].cpu())
+        self.laplacian_loss = LaplacianLoss(self.vertices[0], self.faces[0])
+        self.flatten_loss = FlattenLoss(self.faces[0])
 
     def forward(self):
         loss = 0.0
