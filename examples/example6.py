@@ -180,7 +180,7 @@ class Model(nn.Module):
         laplacian_loss = self.laplacian_loss(self.vertices).mean()
         flatten_loss = self.flatten_loss(self.vertices).mean()
 
-        return loss + 0.03 * laplacian_loss + 0.0003 * flatten_loss
+        return loss + 1 * laplacian_loss + 1 * flatten_loss
 
 
 def make_gif(filename):
