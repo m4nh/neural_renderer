@@ -208,7 +208,7 @@ def main():
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()))
 
     # optimizer.setup(model)
-    loop = tqdm.tqdm(range(6000))
+    loop = tqdm.tqdm(range(3000))
     for i in loop:
         loop.set_description('Optimizing')
         # optimizer.target.cleargrads()
