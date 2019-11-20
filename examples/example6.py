@@ -20,6 +20,7 @@ data_dir = os.path.join(current_dir, 'data')
 
 images = {
     'data/eye.png': [3, 0, 0],
+    'data/eye.png': [3, 180, 0],
 }
 
 
@@ -86,7 +87,7 @@ def main():
 
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()))
     # optimizer.setup(model)
-    loop = tqdm.tqdm(range(1000))
+    loop = tqdm.tqdm(range(2000))
     for i in loop:
         loop.set_description('Optimizing')
         # optimizer.target.cleargrads()
