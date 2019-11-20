@@ -20,9 +20,15 @@ data_dir = os.path.join(current_dir, 'data')
 
 images = {
     'data/2.83_0_45.png': [2.83, 0, 45],
-    'data/2_90_0.png': [2, 90, 0],
+    'data/2.83_0_45.png': [2.83, 90, 45],
+    'data/2.83_0_45.png': [2.83, 180, 45],
+    'data/2.83_0_45.png': [2.83, 270, 45],
     'data/3.46_45_45.png': [3.46, 45, 45],
-    'data/3_0_0.png': [3, 0, 0]
+    'data/3.46_45_45.png': [3.46, 135, 45],
+    'data/3_0_0.png': [3, 0, 0],
+    'data/3_0_0.png': [3, 90, 0],
+    'data/3_0_0.png': [3, 180, 0],
+    'data/3_0_0.png': [3, 270, 0]
 }
 
 
@@ -96,9 +102,9 @@ def main():
         print(loss)
         loss.backward()
         optimizer.step()
-        images,_,_ = model.renderer(model.vertices, model.faces, model.textures)
+        images, _, _ = model.renderer(model.vertices, model.faces, model.textures)
         image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
-        imsave('/tmp/_tmp_%04d.png' % i, image)
+        imsave('/tmp/_tmp_%04d.jpg' % i, image)
     make_gif(args.filename_output_optimization)
 
     # draw object
@@ -108,7 +114,7 @@ def main():
         model.renderer.eye = nr.get_points_from_angles(2.732, 0, azimuth)
         images, _, _ = model.renderer(model.vertices, model.faces, model.textures)
         image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
-        imsave('/tmp/_tmp_%04d.png' % num, image)
+        imsave('/tmp/_tmp_%04d.jpg' % num, image)
     make_gif(args.filename_output_result)
 
 
