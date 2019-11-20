@@ -106,7 +106,7 @@ def main():
         optimizer.step()
         images, _, _ = model.renderer(model.vertices, model.faces, model.textures)
         image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
-        imsave('/tmp/_tmp_%04d.jpg' % i, image)
+        imsave('/tmp/_tmp_%04d.png' % i, image)
     make_gif(args.filename_output_optimization)
 
     # draw object
@@ -116,7 +116,7 @@ def main():
         model.renderer.eye = nr.get_points_from_angles(2.732, 0, azimuth)
         images, _, _ = model.renderer(model.vertices, model.faces, model.textures)
         image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
-        imsave('/tmp/_tmp_%04d.jpg' % num, image)
+        imsave('/tmp/_tmp_%04d.png' % num, image)
     make_gif(args.filename_output_result)
 
 
