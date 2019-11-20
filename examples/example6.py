@@ -88,7 +88,7 @@ def main():
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()))
 
     # optimizer.setup(model)
-    loop = tqdm.tqdm(range(4000))
+    loop = tqdm.tqdm(range(6000))
     for i in loop:
         loop.set_description('Optimizing')
         # optimizer.target.cleargrads()
@@ -97,7 +97,7 @@ def main():
         print(loss)
         loss.backward()
         optimizer.step()
-        if i % 15 == 0:
+        if i % 20 == 0:
             images, _, _ = model.renderer(model.vertices, model.faces, model.textures)
             image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
             imsave('/tmp/_tmp_%04d.png' % i, image)
