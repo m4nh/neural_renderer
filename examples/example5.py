@@ -57,8 +57,8 @@ class Model(nn.Module):
         for k, v in images.items():
             self.renderer.eye = nr.get_points_from_angles(v[0], v[2], v[1])
             image, _, _ = self.renderer(self.vertices, self.faces, torch.tanh(self.textures))
-            #image = self.renderer(self.vertices, self.faces, mode='silhouettes')
-            loss += torch.sum((image - getattr(self,'image_ref_{}'.format(counter))) ** 2)
+            # image = self.renderer(self.vertices, self.faces, mode='silhouettes')
+            loss += torch.sum((image - getattr(self, 'image_ref_{}'.format(counter))) ** 2)
             counter += 1
         return loss
 
@@ -96,7 +96,7 @@ def main():
         print(loss)
         loss.backward()
         optimizer.step()
-        images = model.renderer(model.vertices, model.faces)
+        images = model.renderer(model.vertices, model.faces, model.textures)
         image = images.detach().cpu().numpy()[0]
         imsave('/tmp/_tmp_%04d.png' % i, image)
     make_gif(args.filename_output_optimization)
