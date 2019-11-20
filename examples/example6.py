@@ -165,7 +165,7 @@ class Model(nn.Module):
 
         # define Laplacian and flatten geometry constraints
         self.laplacian_loss = LaplacianLoss(self.vertices[0], self.faces[0])
-        self.flatten_loss = FlattenLoss(self.faces[0])
+        # self.flatten_loss = FlattenLoss(self.faces[0])
 
     def forward(self):
         loss = 0.0
@@ -178,9 +178,9 @@ class Model(nn.Module):
             counter += 1
 
         laplacian_loss = self.laplacian_loss(self.vertices).mean()
-        flatten_loss = self.flatten_loss(self.vertices).mean()
+        # flatten_loss = self.flatten_loss(self.vertices).mean()
 
-        return loss + 0.03 * laplacian_loss + 0.0003 * flatten_loss
+        return loss + 0.03 * laplacian_loss #+ 0.0003 * flatten_loss
 
 
 def make_gif(filename):
