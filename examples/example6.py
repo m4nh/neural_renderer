@@ -20,7 +20,7 @@ data_dir = os.path.join(current_dir, 'data')
 
 images = {
     'data/eye.png': [3, 0, 0],
-    'data/eye.png': [3, 180, 0],
+    'data/eye_flip.png': [3, 180, 0],
 }
 
 
@@ -86,8 +86,9 @@ def main():
     model.cuda()
 
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()))
+
     # optimizer.setup(model)
-    loop = tqdm.tqdm(range(2000))
+    loop = tqdm.tqdm(range(4000))
     for i in loop:
         loop.set_description('Optimizing')
         # optimizer.target.cleargrads()
@@ -96,7 +97,7 @@ def main():
         print(loss)
         loss.backward()
         optimizer.step()
-        if i % 10 == 0:
+        if i % 15 == 0:
             images, _, _ = model.renderer(model.vertices, model.faces, model.textures)
             image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
             imsave('/tmp/_tmp_%04d.png' % i, image)
