@@ -73,7 +73,7 @@ def make_gif(filename):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-io', '--filename_obj', type=str, default=os.path.join(data_dir, 'teapot.obj'))
+    parser.add_argument('-io', '--filename_obj', type=str, default=os.path.join(data_dir, 'sphere.obj'))
     parser.add_argument('-ir', '--filename_ref', type=str, default=os.path.join(data_dir, 'example2_ref.png'))
     parser.add_argument(
         '-oo', '--filename_output_optimization', type=str, default=os.path.join(data_dir, 'example2_optimization.gif'))
