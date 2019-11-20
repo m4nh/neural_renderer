@@ -58,7 +58,7 @@ class Model(nn.Module):
             self.renderer.eye = nr.get_points_from_angles(v[0], v[2], v[1])
             image, _, _ = self.renderer(self.vertices, self.faces, torch.tanh(self.textures))
             #image = self.renderer(self.vertices, self.faces, mode='silhouettes')
-            loss += torch.sum((image - getattr(self,'image_ref_{}')) ** 2)
+            loss += torch.sum((image - getattr(self,'image_ref_{}'.format(counter))) ** 2)
             counter += 1
         return loss
 
