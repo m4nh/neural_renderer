@@ -42,7 +42,7 @@ class Model(nn.Module):
 
         # load reference image
         counter = 0
-        for k, v in images:
+        for k, v in images.items():
             image_ref = torch.from_numpy(imread(k).astype(np.float32).mean(-1) / 255.)[None, ::]
             self.register_buffer('image_ref_{}'.format(counter), image_ref)
             counter += 1
@@ -54,7 +54,7 @@ class Model(nn.Module):
     def forward(self):
         loss = 0.0
         counter = 0
-        for k, v in images:
+        for k, v in images.items():
             self.renderer.eye = nr.get_points_from_angles(v[0], v[2], v[1])
             image, _, _ = self.renderer(self.vertices, self.faces, torch.tanh(self.textures))
             #image = self.renderer(self.vertices, self.faces, mode='silhouettes')
