@@ -96,8 +96,8 @@ def main():
         print(loss)
         loss.backward()
         optimizer.step()
-        images = model.renderer(model.vertices, model.faces, model.textures)
-        image = images.detach().cpu().numpy()[0]
+        images,_,_ = model.renderer(model.vertices, model.faces, model.textures)
+        image = images.detach().cpu().numpy()[0].transpose((1, 2, 0))
         imsave('/tmp/_tmp_%04d.png' % i, image)
     make_gif(args.filename_output_optimization)
 
