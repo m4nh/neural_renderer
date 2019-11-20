@@ -19,10 +19,9 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 data_dir = os.path.join(current_dir, 'data')
 
 images = {
-    'data/eye.png': [3, 0, 0],
     'data/eye_flip.png': [3, 180, 0],
-    'data/eye_side.png': [3, 90, 0],
-    'data/eye_side.png': [3, 270, 0]
+    'data/eye_side.png': [3, 270, 0],
+    'data/eye.png': [3, 0, 0],
 }
 
 
