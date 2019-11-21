@@ -149,7 +149,8 @@ class Model(nn.Module):
         # create textures
         texture_size = 4
         textures = torch.zeros(1, self.faces.shape[1], texture_size, texture_size, texture_size, 3, dtype=torch.float32)
-        self.textures = nn.Parameter(textures)
+        # self.textures = nn.Parameter(textures)
+        self.register_buffer('textures', textures)
 
         # load reference image
         counter = 0
