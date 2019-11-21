@@ -154,7 +154,7 @@ class Model(nn.Module):
         # load reference image
         counter = 0
         for k, v in images.items():
-            image_ref = torch.from_numpy(imread(k).astype('float32').mean(-1) / 255.)[None, :3, ::]
+            image_ref = torch.from_numpy(imread(k).astype('float32') / 255.)[None, :1, ::]
             print("IAMGE REF", image_ref.shape)
             # image_ref = torch.from_numpy(imread(k).astype(np.float32).mean(-1) / 255.)[None, ::]
             self.register_buffer('image_ref_{}'.format(counter), image_ref)
